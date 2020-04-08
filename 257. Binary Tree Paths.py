@@ -15,21 +15,20 @@ class Solution(object):
         """
         result = []
 
-        def search(node, path):
+        def search(node, visited):
             if not node:
                 return
-            path += str(node.val)
+            visited = visited + [str(node.val)]
             # 如果左右子树都没有，退出递归
             if not node.left and not node.right:
-                result.append(path)
+                result.append('->'.join(visited))
                 return
-            path += '->'
             if node.left:
-                search(node.left, path)
+                search(node.left, visited)
             if node.right:
-                search(node.right, path)
+                search(node.right, visited)
 
-        search(root, '')
+        search(root, [])
 
         return result
 
