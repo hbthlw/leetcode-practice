@@ -1,3 +1,4 @@
+# coding=utf-8
 class Solution(object):
     def combinationSum2(self, candidates, target):
         """
@@ -17,7 +18,9 @@ class Solution(object):
                 return
 
             for i in range(start, len(candidates)):
-
+                # 因为排序了，所以每层相同元素，只取第一个
+                # if i != start and candidates[i - 1] == candidates[i]:
+                # 如果是本层的第一个，则它可以和之前的相同
                 if i > start and candidates[i - 1] == candidates[i]:
                     continue
 
